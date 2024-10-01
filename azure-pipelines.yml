@@ -20,14 +20,14 @@ stages:
         steps:
           - script:
               echo "Empty job."
-- task: codeBeamer@1
-  inputs:
-    test_xml_folder: 'example/test_results'
-    test_run_name: '$(Build.DefinitionName) $(Build.Reason)'
-    test_run_id: '$(Build.BuildId)'
-    server_url: 'https://codebeamer.maitdemo.de/cb/'
-    cb_user: '$(cb_user)'
-    cb_password: '$(cb_password)'
-    test_configuration_id: '10606'
-    test_case_tracker_id: '142395'
-    test_run_tracker_id: '142527'
+          - task: codeBeamer@1
+            inputs:
+              test_xml_folder: 'example/test_results'
+              test_run_name: '$(Build.DefinitionName) $(Build.Reason)'
+              test_run_id: '$(Build.BuildId)'
+              server_url: 'https://codebeamer.maitdemo.de/cb/'
+              cb_user: '$(cb_user)'
+              cb_password: '$(cb_password)'
+              test_configuration_id: '10606'
+              test_case_tracker_id: '142395'
+              test_run_tracker_id: '142527'
