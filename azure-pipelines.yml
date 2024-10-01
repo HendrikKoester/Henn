@@ -1,0 +1,33 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+variables: 
+ - group: CodeBeamer
+
+stages:
+  - stage: Test
+    jobs:
+      - job: CodeBeamer
+        displayName: "CodeBeamer upload"
+        steps:
+          - script:
+              echo "Empty job."
+- task: codeBeamer@1
+  inputs:
+    test_xml_folder: 'example/test_results'
+    test_run_name: '$(Build.DefinitionName) $(Build.Reason)'
+    test_run_id: '$(Build.BuildId)'
+    server_url: 'https://codebeamer.maitdemo.de/cb/'
+    cb_user: '$(cb_user)'
+    cb_password: '$(cb_password)'
+    test_configuration_id: '10606'
+    test_case_tracker_id: '142395'
+    test_run_tracker_id: '142527'
